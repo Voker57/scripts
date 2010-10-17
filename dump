@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function usage()
+usage()
 {
 	echo "Usage: dump <file|image|text> [file] [language]"
 }
@@ -18,8 +18,6 @@ case $1 in
 		else
 			LANG=$3
 		fi
-		echo $LANG
-		echo $2
 		URL=`curl -w %{redirect_url} -F "lang=$LANG" -F "text=@$2" http://dump.bitcheese.net/upload-text`
 		echo $URL ;;
 	*) usage;
