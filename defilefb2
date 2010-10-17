@@ -1,0 +1,9 @@
+#!/bin/sh
+TEMP=`mktemp -d`
+unzip -d $TEMP $1
+for fb2 in $TEMP/*.fb2; do
+	html2text -ascii $fb2 | enconv -L ru -x CP1251 > $fb2.txt
+	rm $fb2
+done
+rm $1
+zip -j $1 $TEMP/*

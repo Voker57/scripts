@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -n "/me np: $(xmms2 current | head -n1)" | xsel -ipbs

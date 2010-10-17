@@ -1,0 +1,16 @@
+#!/bin/sh
+# daemonize
+#
+# Usage:
+# % daemonize rtorrent -i b 123.45.45.67
+# Starts rtorrent with given parameters, if rtorrent is not running under daemonize already. If it's already running, parameters are ignored.
+# % daemonize rtorrent
+# To connect to rtorrent later
+#
+# Requirements:
+# dtach
+
+USERNAME=`whoami`
+PROG=$1
+mkdir -p /tmp/daemonize-$USERNAME
+dtach -A /tmp/daemonize-$USERNAME/$PROG $*

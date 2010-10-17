@@ -1,0 +1,1 @@
+echo "mpc play" | at $1

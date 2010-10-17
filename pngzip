@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ -z $1]; then
+	echo "Usage: pngzip <image> <file> <output>"
+	exit
+fi
+TEMP=`mktemp`
+rm $TEMP
+zip -u $TEMP $2
+cat $1 $TEMP > $3
+rm $TEMP

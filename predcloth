@@ -1,0 +1,4 @@
+#!/bin/sh
+redcloth $1 > /tmp/predcloth.html
+lynx /tmp/predcloth.html
+rm /tmp/predcloth.html

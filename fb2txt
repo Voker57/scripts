@@ -1,0 +1,2 @@
+#!/bin/sh
+html2txt -utf8 $1

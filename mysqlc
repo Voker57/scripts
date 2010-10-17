@@ -1,0 +1,2 @@
+#!/bin/sh
+mysql $1 -u $1 --password=$1

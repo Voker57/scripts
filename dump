@@ -1,0 +1,26 @@
+#!/bin/sh
+
+function usage()
+{
+	echo "Usage: dump <file|image|text> [file] [language]"
+}
+
+case $1 in
+	file) 
+		URL=`curl -w %{redirect_url} -F "file=@$2"		http://dump.bitcheese.net/upload-file?simple` 
+		echo "$URL [$URL/preview]" ;;
+	image) 
+		URL=`curl -w %{redirect_url} -F "file=@$2" http://dump.bitcheese.net/upload-image?simple`
+		echo "$URL [$URL/preview]" ;;
+	text)
+		if [ -z $3 ] ; then
+			LANG=Plaintext
+		else
+			LANG=$3
+		fi
+		echo $LANG
+		echo $2
+		URL=`curl -w %{redirect_url} -F "lang=$LANG" -F "text=@$2" http://dump.bitcheese.net/upload-text`
+		echo $URL ;;
+	*) usage;
+esac
