@@ -1,0 +1,4 @@
+#!/bin/sh
+# Converts .epub files to .zip file with CP1251 encoded plaintext
+OUT=`echo $1 | sed s/epub/zip/`
+unzip -p "$1" '*/Text/*.xhtml' | html2text -utf8 |  enconv -L ru -x CP1251 | zip > $OUT
