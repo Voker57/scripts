@@ -1,0 +1,12 @@
+#!/bin/sh
+TMP=`mktemp -u`
+TMP=$TMP.jpg
+STARTX=$((RANDOM % 500))
+STARTY=$((RANDOM % 500))
+ENDX=$((STARTX + 1))
+ENDY=$((STARTY + 1))
+wget $1 -O $TMP
+mogrify $TMP -draw "line $STARTX,$STARTY $ENDX,$ENDY"
+echo $TMP
+read -p "Press something"
+rm $TMP
